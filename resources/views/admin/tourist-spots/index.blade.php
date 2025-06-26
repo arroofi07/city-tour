@@ -10,9 +10,14 @@
       <h1 class="text-3xl font-bold text-gray-900">Destinasi Wisata</h1>
       <p class="text-gray-600 mt-1">Kelola semua tempat wisata di Padang</p>
     </div>
-    <a href="{{ route('admin.tourist-spots.create') }}" class="mt-4 md:mt-0 bg-gradient-to-r from-orange-500 to-pink-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all transform hover:scale-105">
-      ✨ Tambah Destinasi Baru
-    </a>
+    <div class="mt-4 md:mt-0 flex flex-col md:flex-row gap-3">
+      <a href="{{ route('admin.air-manis-photos.index') }}" class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all transform hover:scale-105 text-center">
+        📸 Kelola Foto Air Manis
+      </a>
+      <a href="{{ route('admin.tourist-spots.create') }}" class="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all transform hover:scale-105 text-center">
+        ✨ Tambah Destinasi Baru
+      </a>
+    </div>
   </div>
 
   @if(session('success'))

@@ -326,87 +326,73 @@
     </section>
     @endif
 
-    <!-- Air Manis Section -->
-    <section id="about" class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute top-0 w-full h-40 overflow-hidden rotate-180">
-                <svg viewBox="0 0 1200 120" fill="none" class="w-full h-full animate-wave-gentle">
-                    <path d="M0,60 C200,100 400,20 600,60 C800,100 1000,20 1200,60 L1200,120 L0,120 Z" fill="rgba(6, 182, 212, 0.2)" />
-                </svg>
+    <!-- About Air Manis Section -->
+    <section id="about" class="py-16 sm:py-24 relative overflow-hidden">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6">
+            <!-- Section Title -->
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-space-grotesk font-black mb-4 sm:mb-6">
+                    <span class="bg-gradient-to-r from-cyan-200 via-teal-200 to-emerald-200 bg-clip-text text-transparent">
+                        Tentang Air Manis
+                    </span>
+                </h2>
+                <p class="text-lg sm:text-xl text-white/80">
+                    Jelajahi keindahan dan sejarah legendaris Pantai Air Manis melalui lensa kami
+                </p>
             </div>
-        </div>
 
-        <div class="max-w-8xl mx-auto px-4 sm:px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <div class="space-y-8">
-                    <div class="inline-flex items-center glass-card rounded-full px-4 sm:px-8 py-2 sm:py-4">
-                        <div class="w-2 sm:w-3 h-2 sm:h-3 bg-cyan-400 rounded-full mr-2 sm:mr-3 animate-pulse"></div>
-                        <span class="text-white/90 font-bold text-sm sm:text-lg tracking-wide">🏖️ TENTANG AIR MANIS</span>
-                    </div>
-
-                    <h2 class="text-4xl lg:text-5xl font-space-grotesk font-bold text-white leading-tight">
-                        Pantai Legendaris dengan
-                        <span class="bg-gradient-to-r from-cyan-200 via-teal-200 to-emerald-200 bg-clip-text text-transparent">
-                            Cerita yang Mendunia
-                        </span>
-                    </h2>
-
-                    <div class="prose prose-lg text-white/80 max-w-none space-y-6">
-                        <p>
-                            Air Manis adalah salah satu pantai paling legendaris di Padang, terkenal dengan kisah Malin Kundang yang mendunia. Pantai ini menyimpan batu karang berbentuk kapal yang dipercaya sebagai kapal Malin Kundang yang telah dikutuk menjadi batu.
-                        </p>
-                        <p>
-                            Selain nilai sejarah dan budayanya, Air Manis juga menawarkan pemandangan pantai yang menakjubkan, dengan pasir putih yang lembut dan air laut yang jernih. Pengunjung dapat menikmati berbagai aktivitas seperti berenang, berfoto, atau sekadar menikmati sunset yang memukau.
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-                        <div class="glass-card rounded-2xl p-4 sm:p-6 text-center">
-                            <div class="text-3xl sm:text-4xl font-bold text-cyan-300 mb-1">1.5km</div>
-                            <div class="text-white/80 font-medium text-sm">Panjang Pantai</div>
+            <!-- Photo Gallery -->
+            @if($airManisPhotos->count() > 0)
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                @foreach($airManisPhotos as $photo)
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/3]">
+                    <img src="{{ asset('storage/' . $photo->image_path) }}"
+                        alt="{{ $photo->title }}"
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">{{ $photo->title }}</h3>
+                            @if($photo->description)
+                            <p class="text-white/80">{{ $photo->description }}</p>
+                            @endif
                         </div>
-                        <div class="glass-card rounded-2xl p-4 sm:p-6 text-center">
-                            <div class="text-3xl sm:text-4xl font-bold text-cyan-300 mb-1">1819</div>
-                            <div class="text-white/80 font-medium text-sm">Tahun Legenda</div>
-                        </div>
-                        <div class="glass-card rounded-2xl p-4 sm:p-6 text-center">
-                            <div class="text-3xl sm:text-4xl font-bold text-cyan-300 mb-1">24/7</div>
-                            <div class="text-white/80 font-medium text-sm">Jam Buka</div>
-                        </div>
-                        <div class="glass-card rounded-2xl p-4 sm:p-6 text-center">
-                            <div class="text-3xl sm:text-4xl font-bold text-cyan-300 mb-1">500+</div>
-                            <div class="text-white/80 font-medium text-sm">Review/Bulan</div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                        <a href="#contact" class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-8 py-4 rounded-2xl font-bold hover:shadow-xl hover:shadow-cyan-500/25 transform hover:-translate-y-1 transition-all text-center">
-                            Hubungi Guide
-                        </a>
-                        <a href="https://maps.google.com" target="_blank" class="glass-card text-white px-8 py-4 rounded-2xl font-bold hover:bg-white/20 transition-all text-center inline-flex items-center justify-center space-x-2">
-                            <span>Buka di Maps</span>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                            </svg>
-                        </a>
                     </div>
                 </div>
+                @endforeach
+            </div>
+            @else
+            <div class="text-center py-12">
+                <div class="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
+                    <span class="text-6xl mb-4 block">📸</span>
+                    <h3 class="text-2xl font-bold text-white mb-2">Foto Akan Segera Hadir!</h3>
+                    <p class="text-white/80">Kami sedang mempersiapkan galeri foto terbaik dari Pantai Air Manis untuk Anda.</p>
+                </div>
+            </div>
+            @endif
 
-                <div class="grid grid-cols-2 gap-4 sm:gap-6">
-                    <div class="space-y-4 sm:space-y-6 pt-12">
-                        <div class="glass-card rounded-2xl aspect-[4/5] overflow-hidden">
-                            <img src="https://source.unsplash.com/random/600x800?beach" alt="Air Manis Beach 1" class="w-full h-full object-cover">
+            <!-- Malin Kundang Story -->
+            <div class="mt-16 sm:mt-24">
+                <div class="glass-card rounded-3xl p-8 sm:p-12">
+                    <div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+                        <div>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">Legenda Malin Kundang</h3>
+                            <p class="text-white/80 text-lg leading-relaxed mb-6">
+                                Pantai Air Manis terkenal dengan legenda Malin Kundang, seorang anak yang dikutuk menjadi batu karena durhaka kepada ibunya. Hingga kini, batu yang menyerupai sosok manusia ini menjadi daya tarik utama pantai.
+                            </p>
+                            <a href="#" class="inline-flex items-center space-x-2 text-cyan-300 hover:text-cyan-400 transition-colors">
+                                <span>Baca selengkapnya</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
                         </div>
-                        <div class="glass-card rounded-2xl aspect-square overflow-hidden">
-                            <img src="https://source.unsplash.com/random/600x600?sunset+beach" alt="Air Manis Beach 2" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                    <div class="space-y-4 sm:space-y-6">
-                        <div class="glass-card rounded-2xl aspect-square overflow-hidden">
-                            <img src="https://source.unsplash.com/random/600x600?rock+beach" alt="Air Manis Beach 3" class="w-full h-full object-cover">
-                        </div>
-                        <div class="glass-card rounded-2xl aspect-[4/5] overflow-hidden">
-                            <img src="https://source.unsplash.com/random/600x800?tropical+beach" alt="Air Manis Beach 4" class="w-full h-full object-cover">
+                        <div class="relative">
+                            <div class="aspect-[4/3] rounded-2xl overflow-hidden">
+                                <img src="{{ asset('images/malin-kundang.jpg') }}" alt="Batu Malin Kundang" class="w-full h-full object-cover">
+                            </div>
+                            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center transform rotate-12">
+                                <span class="text-4xl transform -rotate-12">🌊</span>
+                            </div>
                         </div>
                     </div>
                 </div>

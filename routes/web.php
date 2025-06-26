@@ -22,3 +22,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.post.size'])-
         return redirect()->route('admin.tourist-spots.index');
     });
 });
+
+// Air Manis Photos Routes
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+    Route::resource('air-manis-photos', \App\Http\Controllers\Admin\AirManisPhotoController::class);
+    Route::post('air-manis-photos/update-order', [\App\Http\Controllers\Admin\AirManisPhotoController::class, 'updateOrder'])
+        ->name('air-manis-photos.update-order');
+});

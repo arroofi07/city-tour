@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\TouristSpot;
+use App\Models\AirManisPhoto;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
   public function index()
   {
-    $featuredSpots = TouristSpot::where('is_active', true)
-      ->where('is_featured', true)
-      ->latest()
-      ->take(3)
+    $featuredSpots = TouristSpot::where('is_featured', true)
+      ->where('is_active', true)
+      ->orderBy('created_at', 'desc')
+      ->take(6)
       ->get();
 
     $spots = TouristSpot::where('is_active', true)
@@ -20,7 +21,11 @@ class HomeController extends Controller
       ->take(6)
       ->get();
 
-    return view('welcome', compact('featuredSpots', 'spots'));
+    $airManisPhotos = AirManisPhoto::where('is_active', true)
+      ->orderBy('order')
+      ->get();
+
+    return view('welcome', compact('featuredSpots', 'spots', 'airManisPhotos'));
   }
 
   public function spots(Request $request)
