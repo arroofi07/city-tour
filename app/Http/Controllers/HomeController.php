@@ -1,0 +1,63 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\TouristSpot;
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+  public function index()
+  {
+    $featuredSpots = TouristSpot::where('is_active', true)
+      ->where('is_featured', true)
+      ->latest()
+      ->take(3)
+      ->get();
+
+    $spots = TouristSpot::where('is_active', true)
+      ->latest()
+      ->take(6)
+      ->get();
+
+    return view('welcome', compact('featuredSpots', 'spots'));
+  }
+
+  public function spots(Request $request)
+  {
+    $query = TouristSpot::where('is_active', true);
+
+    if ($request->has('category') && $request->category) {
+      $query->where('category', $request->category);
+    }
+
+    if ($request->has('search') && $request->search) {
+      $search = $request->search;
+      $query->where(function ($q) use ($search) {
+        $q->where('name', 'like', "%{$search}%")
+          ->orWhere('description', 'like', "%{$search}%")
+          ->orWhere('location', 'like', "%{$search}%");
+      });
+    }
+
+    $spots = $query->latest()->paginate(9);
+
+    return view('spots.index', compact('spots'));
+  }
+
+  public function show(TouristSpot $spot)
+  {
+    if (!$spot->is_active) {
+      abort(404);
+    }
+
+    $relatedSpots = TouristSpot::where('is_active', true)
+      ->where('category', $spot->category)
+      ->where('id', '!=', $spot->id)
+      ->latest()
+      ->take(3)
+      ->get();
+
+    return view('spots.show', compact('spot', 'relatedSpots'));
+  }
+}
