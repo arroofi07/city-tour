@@ -164,39 +164,14 @@
                     </p>
                 </div>
 
-                <!-- Premium Search Bar -->
-                <div class="max-w-3xl mx-auto mb-8 sm:mb-12 px-4">
-                    <div class="relative">
-                        <input type="text" id="search-input"
-                            placeholder="Cari spot foto terbaik di Air Manis..."
-                            class="w-full px-6 sm:px-8 py-4 sm:py-6 rounded-2xl sm:rounded-3xl glass-card text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-base sm:text-xl pl-14 sm:pl-16 font-medium">
-                        <div class="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2">
-                            <div class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center">
-                                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premium Filter Tabs -->
-                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 px-2 sm:px-4">
-                    <button data-category="all" class="filter-btn active px-4 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold hover:shadow-xl hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-1 text-sm sm:text-base">
-                        🌊 Semua Spot
-                    </button>
-                    <button data-category="foto" class="filter-btn px-4 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl glass-card text-white/80 hover:text-white hover:bg-white/20 transition-all transform hover:-translate-y-1 font-bold text-sm sm:text-base">
-                        📸 Spot Foto
-                    </button>
-                    <button data-category="sejarah" class="filter-btn px-4 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl glass-card text-white/80 hover:text-white hover:bg-white/20 transition-all transform hover:-translate-y-1 font-bold text-sm sm:text-base">
-                        🏛️ Situs Sejarah
-                    </button>
-                    <button data-category="kuliner" class="filter-btn px-4 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl glass-card text-white/80 hover:text-white hover:bg-white/20 transition-all transform hover:-translate-y-1 font-bold text-sm sm:text-base">
-                        🍜 Kuliner
-                    </button>
-                    <button data-category="aktivitas" class="filter-btn px-4 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl glass-card text-white/80 hover:text-white hover:bg-white/20 transition-all transform hover:-translate-y-1 font-bold text-sm sm:text-base">
-                        🏄‍♂️ Aktivitas
-                    </button>
+                <!-- Premium Action Button -->
+                <div class="flex justify-center px-4 sm:px-6 mt-8 sm:mt-12">
+                    <a href="{{ route('spots.index') }}" class="group bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-xl hover:shadow-cyan-500/25 transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center space-x-3">
+                        <span>Jelajahi Semua Destinasi</span>
+                        <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
                 </div>
 
                 <!-- Stats -->
