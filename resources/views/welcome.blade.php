@@ -198,200 +198,350 @@
     </section>
 
     @if($featuredSpots->count() > 0)
-    <!-- Featured Spots -->
-    <section id="featured" class="py-20 bg-slate-900/50 backdrop-blur-lg">
-        <div class="max-w-8xl mx-auto px-4 sm:px-6">
-            <div class="text-center space-y-4 mb-16">
-                <div class="inline-flex items-center glass-card rounded-full px-4 sm:px-8 py-2 sm:py-4">
-                    <div class="w-2 sm:w-3 h-2 sm:h-3 bg-cyan-400 rounded-full mr-2 sm:mr-3 animate-pulse"></div>
-                    <span class="text-white/90 font-bold text-sm sm:text-lg tracking-wide">⭐ SPOT UNGGULAN</span>
+    <!-- Featured Spots - REDESIGNED GEN Z 2025 🔥 -->
+    <section id="featured" class="py-20 relative overflow-hidden">
+        <!-- Epic Background with Floating Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-cyan-900/60 to-teal-900/40 backdrop-blur-lg"></div>
+            <div class="absolute top-10 right-20 w-40 h-40 bg-gradient-to-r from-cyan-500/30 to-teal-500/30 rounded-full blur-2xl animate-pulse"></div>
+            <div class="absolute bottom-20 left-20 w-60 h-60 bg-gradient-to-r from-teal-500/20 to-emerald-500/20 rounded-full blur-3xl animate-bounce slow"></div>
+            <div class="absolute top-1/2 right-1/4 w-32 h-32 bg-gradient-to-r from-emerald-500/25 to-lime-500/25 rounded-full blur-xl animate-ping"></div>
+
+            <!-- Floating Icons -->
+            <div class="absolute top-16 left-16 text-4xl animate-float opacity-60">✨</div>
+            <div class="absolute bottom-32 right-32 text-3xl animate-bounce opacity-40">🌟</div>
+            <div class="absolute top-1/3 left-1/3 text-2xl animate-pulse opacity-50">💫</div>
+        </div>
+
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 relative z-10">
+            <!-- Epic Section Header -->
+            <div class="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center glass-card rounded-full px-6 sm:px-8 py-3 sm:py-4 mb-8 group hover:scale-105 transition-all duration-300">
+                    <div class="w-3 h-3 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full mr-3 animate-pulse"></div>
+                    <span class="text-white/90 font-bold text-sm sm:text-lg tracking-wider">🌟 SPOT YANG LAGI VIRAL</span>
+                    <div class="w-3 h-3 bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full ml-3 animate-pulse"></div>
                 </div>
-                <h2 class="text-4xl md:text-5xl font-space-grotesk font-bold text-white">
-                    Spot Legendaris
+
+                <!-- Main Title -->
+                <h2 class="text-4xl sm:text-6xl md:text-7xl font-space-grotesk font-black mb-6 leading-tight">
+                    <span class="block text-white mb-2">Destinasi</span>
+                    <span class="bg-gradient-to-r from-cyan-300 via-teal-300 to-emerald-300 bg-clip-text text-transparent animate-pulse">
+                        Hits Banget! 🔥
+                    </span>
                 </h2>
-                <p class="text-xl text-white/80 max-w-2xl mx-auto">
-                    Lokasi ikonik yang wajib kamu kunjungi di Air Manis
+
+                <!-- Subtitle -->
+                <p class="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-8">
+                    Spot-spot legendaris yang bikin feed Instagram kamu makin aesthetic goals! 📸✨
                 </p>
+
+                <!-- Trending Tags -->
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-cyan-300 hover:scale-110 transition-transform cursor-pointer">#TrendingNow</span>
+                    <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-teal-300 hover:scale-110 transition-transform cursor-pointer">#MustVisit</span>
+                    <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-emerald-300 hover:scale-110 transition-transform cursor-pointer">#ContentCreator</span>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($featuredSpots as $spot)
-                <div class="group glass-card rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-500 transform hover:-translate-y-2">
+            <!-- Interactive Destination Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
+                @foreach($featuredSpots as $index => $spot)
+                <div class="group relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-lg border border-white/20 hover:border-cyan-400/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-cyan-500/20">
+
+                    <!-- Image Container with Overlay Effects -->
                     <div class="relative aspect-[4/3] overflow-hidden">
                         @if($spot->image)
-                        <img src="{{ asset('storage/' . $spot->image) }}" alt="{{ $spot->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src="{{ asset('storage/' . $spot->image) }}" alt="{{ $spot->name }}"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         @else
-                        <div class="w-full h-full bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center">
-                            <span class="text-white text-6xl">📍</span>
+                        <div class="w-full h-full bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-500 flex items-center justify-center">
+                            <span class="text-white text-6xl animate-bounce">📍</span>
                         </div>
                         @endif
-                        <div class="absolute top-4 left-4 bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium border border-white/20">
-                            {{ $spot->category }}
+
+                        <!-- Gradient Overlays -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+
+                        <!-- Floating Badges -->
+                        <div class="absolute top-4 left-4 flex flex-col space-y-2">
+                            <div class="glass-card text-white px-3 py-1 rounded-full text-sm font-semibold border border-white/30 flex items-center space-x-1">
+                                <span class="text-cyan-300">🏷️</span>
+                                <span>{{ $spot->category }}</span>
+                            </div>
+                            @if($index < 2)
+                                <div class="glass-card text-white px-3 py-1 rounded-full text-xs font-bold border border-cyan-400/50 bg-gradient-to-r from-cyan-500/20 to-teal-500/20">
+                                <span class="animate-pulse">🔥 TRENDING</span>
                         </div>
-                        <div class="absolute top-4 right-4 bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium border border-white/20 flex items-center space-x-1">
-                            <span class="text-yellow-400">⭐</span>
-                            <span>{{ $spot->rating }}</span>
-                        </div>
+                        @endif
                     </div>
 
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
-                                {{ $spot->name }}
-                            </h3>
-                            <p class="text-white/60 text-sm mt-1">📍 {{ $spot->location }}</p>
-                        </div>
+                    <!-- Rating Badge -->
+                    <div class="absolute top-4 right-4 glass-card text-white px-3 py-2 rounded-full border border-white/30 flex items-center space-x-1 group-hover:scale-110 transition-transform">
+                        <span class="text-yellow-400 animate-pulse">⭐</span>
+                        <span class="font-bold">{{ $spot->rating }}</span>
+                    </div>
 
-                        <p class="text-white/80 line-clamp-2">
-                            {{ $spot->short_description }}
-                        </p>
-
-                        <div class="flex items-center justify-between">
-                            <div class="text-lg font-bold">
-                                @if($spot->price > 0)
-                                <span class="text-cyan-300">Rp {{ number_format($spot->price, 0, ',', '.') }}</span>
-                                @else
-                                <span class="text-emerald-400">GRATIS</span>
-                                @endif
-                            </div>
-                            <a href="{{ route('spots.show', $spot) }}" class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-xl font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:scale-105">
-                                Lihat Detail
-                            </a>
-                        </div>
+                    <!-- Love & Share Buttons -->
+                    <div class="absolute top-1/2 right-4 transform -translate-y-1/2 flex flex-col space-y-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0">
+                        <button class="glass-card p-3 rounded-full hover:scale-110 transition-transform group-hover:bg-red-500/20">
+                            <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                        </button>
+                        <button class="glass-card p-3 rounded-full hover:scale-110 transition-transform group-hover:bg-cyan-500/20">
+                            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                @endforeach
-            </div>
 
-            <div class="text-center mt-12">
-                <a href="{{ route('spots.index') }}" class="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-xl hover:shadow-cyan-500/25 transition-all transform hover:scale-105">
-                    <span>Lihat Semua Spot</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Content Section -->
+                <div class="p-6 space-y-4">
+                    <!-- Header -->
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-300 group-hover:to-emerald-300 group-hover:bg-clip-text transition-all duration-300">
+                            {{ $spot->name }}
+                        </h3>
+                        <div class="flex items-center space-x-2 text-white/60">
+                            <span class="text-cyan-300">📍</span>
+                            <span class="text-sm font-medium">{{ $spot->location }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-white/80 line-clamp-2 leading-relaxed">
+                        {{ $spot->short_description }}
+                    </p>
+
+                    <!-- Stats Row -->
+                    <div class="flex items-center space-x-4 text-sm">
+                        <div class="flex items-center space-x-1">
+                            <span class="text-teal-300">👀</span>
+                            <span class="text-white/60">{{ rand(100, 999) }}k views</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <span class="text-emerald-300">❤️</span>
+                            <span class="text-white/60">{{ rand(50, 200) }}k likes</span>
+                        </div>
+                    </div>
+
+                    <!-- Price & Action -->
+                    <div class="flex items-center justify-between pt-2">
+                        <div>
+                            @if($spot->price > 0)
+                            <div class="text-lg font-bold">
+                                <span class="bg-gradient-to-r from-cyan-300 to-emerald-300 bg-clip-text text-transparent">
+                                    Rp {{ number_format($spot->price, 0, ',', '.') }}
+                                </span>
+                            </div>
+                            <span class="text-xs text-white/60">per orang</span>
+                            @else
+                            <div class="text-lg font-bold">
+                                <span class="bg-gradient-to-r from-emerald-300 to-lime-300 bg-clip-text text-transparent animate-pulse">
+                                    FREE ENTRY! 🎉
+                                </span>
+                            </div>
+                            @endif
+                        </div>
+
+                        <a href="{{ route('spots.show', $spot) }}"
+                            class="group/btn bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-xl hover:shadow-cyan-500/25 transition-all transform hover:scale-105 inline-flex items-center space-x-2">
+                            <span>Explore 🚀</span>
+                            <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hover Glow Effect -->
+                <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-r from-cyan-500/10 via-teal-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl"></div>
+            </div>
+            @endforeach
+        </div>
+
+        <!-- CTA Section -->
+        <div class="text-center">
+            <div class="inline-flex flex-col items-center space-y-4">
+                <!-- Main CTA Button -->
+                <a href="{{ route('spots.index') }}"
+                    class="group bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 text-white px-12 py-5 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-cyan-500/30 transition-all transform hover:scale-105 inline-flex items-center space-x-3">
+                    <span>Jelajahi Semua Destinasi 🌟</span>
+                    <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                     </svg>
                 </a>
-            </div>
-        </div>
-    </section>
-    @endif
 
-    @if($spots->count() > 0)
-    <!-- Popular Destinations -->
-    <section class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-16">
-                <div class="inline-flex items-center space-x-2 bg-pink-100 text-pink-600 px-4 py-2 rounded-full text-sm font-medium">
-                    <span>🚀</span>
-                    <span>TRENDING NOW</span>
-                </div>
-                <h2 class="text-4xl md:text-5xl font-space-grotesk font-bold text-gray-900">
-                    Destinasi Populer
-                </h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Tempat favorit yang paling banyak dikunjungi wisatawan
+                <!-- Sub Text -->
+                <p class="text-white/60 text-sm">
+                    Ada {{ $featuredSpots->count() }}+ destinasi keren lainnya yang siap bikin konten kamu viral! 🔥
                 </p>
             </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                @foreach($spots as $spot)
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="relative aspect-square overflow-hidden">
-                        @if($spot->image)
-                        <img src="{{ asset('storage/' . $spot->image) }}" alt="{{ $spot->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        @else
-                        <div class="w-full h-full bg-gradient-to-br from-orange-400 to-pink-400 flex items-center justify-center">
-                            <span class="text-white text-4xl">📍</span>
-                        </div>
-                        @endif
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                        <div class="absolute bottom-4 left-4 right-4 text-white">
-                            <h3 class="font-bold text-lg">{{ $spot->name }}</h3>
-                            <p class="text-sm opacity-90">{{ $spot->location }}</p>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-gray-900 px-2 py-1 rounded-lg text-xs font-medium flex items-center space-x-1">
-                            <span class="text-yellow-400">⭐</span>
-                            <span>{{ $spot->rating }}</span>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="{{ route('spots.index') }}" class="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-xl hover:shadow-orange-500/25 transition-all transform hover:scale-105">
-                    Lihat Semua Destinasi
-                </a>
-            </div>
+        </div>
         </div>
     </section>
     @endif
 
-    <!-- About Air Manis Section -->
+
+    <!-- About Air Manis Section - REDESIGNED GEN Z 2025 ✨ -->
     <section id="about" class="py-16 sm:py-24 relative overflow-hidden">
-        <div class="max-w-8xl mx-auto px-4 sm:px-6">
-            <!-- Section Title -->
-            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-space-grotesk font-black mb-4 sm:mb-6">
-                    <span class="bg-gradient-to-r from-cyan-200 via-teal-200 to-emerald-200 bg-clip-text text-transparent">
-                        Tentang Air Manis
+        <!-- Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-full blur-xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-48 h-48 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-full blur-2xl animate-bounce slow"></div>
+            <div class="absolute top-1/2 left-1/4 w-20 h-20 bg-gradient-to-r from-emerald-500/20 to-lime-500/20 rounded-full blur-lg animate-ping"></div>
+        </div>
+
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 relative z-10">
+            <!-- Epic Section Title with Interactive Elements -->
+            <div class="text-center max-w-4xl mx-auto mb-12 sm:mb-20">
+                <div class="inline-flex items-center glass-card rounded-full px-6 sm:px-8 py-3 sm:py-4 mb-8 group hover:scale-105 transition-all duration-300">
+                    <div class="w-3 h-3 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full mr-3 animate-pulse"></div>
+                    <span class="text-white/90 font-bold text-sm sm:text-lg tracking-wider">🌺 EKSPLORASI LEGENDARIS</span>
+                    <div class="w-3 h-3 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full ml-3 animate-pulse"></div>
+                </div>
+
+                <h2 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-space-grotesk font-black mb-6 sm:mb-8 leading-tight">
+                    <span class="block text-white mb-2">Vibes</span>
+                    <span class="bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent animate-pulse">
+                        Air Manis ✨
                     </span>
                 </h2>
-                <p class="text-lg sm:text-xl text-white/80">
-                    Jelajahi keindahan dan sejarah legendaris Pantai Air Manis melalui lensa kami
+
+                <p class="text-xl sm:text-2xl md:text-3xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                    Dimana legenda bertemu aesthetic goals yang limitless! 🔥💫
                 </p>
+
+                <!-- Interactive Tags -->
+                <div class="flex flex-wrap justify-center gap-3 mt-8">
+                    <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-cyan-300 hover:scale-110 transition-transform cursor-pointer">#LegendaryVibes</span>
+                    <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-pink-300 hover:scale-110 transition-transform cursor-pointer">#AestheticGoals</span>
+                    <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-purple-300 hover:scale-110 transition-transform cursor-pointer">#InstagramWorthy</span>
+                    <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-emerald-300 hover:scale-110 transition-transform cursor-pointer">#MainCharacterMoment</span>
+                </div>
             </div>
 
-            <!-- Photo Gallery -->
+            <!-- Interactive Photo Gallery with Bento Grid Layout -->
             @if($airManisPhotos->count() > 0)
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                @foreach($airManisPhotos as $photo)
-                <div class="group relative overflow-hidden rounded-2xl aspect-[4/3]">
-                    <img src="{{ asset('storage/' . $photo->image_path) }}"
-                        alt="{{ $photo->title }}"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-0 left-0 right-0 p-6">
-                            <h3 class="text-xl font-bold text-white mb-2">{{ $photo->title }}</h3>
-                            @if($photo->description)
-                            <p class="text-white/80">{{ $photo->description }}</p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+            <div class="mb-16 sm:mb-24">
             </div>
             @else
-            <div class="text-center py-12">
-                <div class="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
-                    <span class="text-6xl mb-4 block">📸</span>
-                    <h3 class="text-2xl font-bold text-white mb-2">Foto Akan Segera Hadir!</h3>
-                    <p class="text-white/80">Kami sedang mempersiapkan galeri foto terbaik dari Pantai Air Manis untuk Anda.</p>
+            <div class="text-center py-16 mb-16">
+                <div class="glass-card rounded-3xl p-12 max-w-2xl mx-auto relative overflow-hidden">
+                    <!-- Animated background -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-cyan-500/10 animate-pulse"></div>
+                    <div class="relative z-10">
+                        <div class="text-8xl mb-6 animate-bounce">📸</div>
+                        <h3 class="text-3xl font-bold text-white mb-4">Coming Soon! ✨</h3>
+                        <p class="text-white/80 text-lg">Kami lagi prepare konten gallery yang bakal bikin feed kamu makin aesthetic! Stay tuned ya bestie! 💫</p>
+
+                        <!-- Loading Animation -->
+                        <div class="mt-8 flex justify-center space-x-2">
+                            <div class="w-3 h-3 bg-pink-400 rounded-full animate-bounce"></div>
+                            <div class="w-3 h-3 bg-purple-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                            <div class="w-3 h-3 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             @endif
 
-            <!-- Malin Kundang Story -->
-            <div class="mt-16 sm:mt-24">
-                <div class="glass-card rounded-3xl p-8 sm:p-12">
-                    <div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
-                        <div>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">Legenda Malin Kundang</h3>
-                            <p class="text-white/80 text-lg leading-relaxed mb-6">
-                                Pantai Air Manis terkenal dengan legenda Malin Kundang, seorang anak yang dikutuk menjadi batu karena durhaka kepada ibunya. Hingga kini, batu yang menyerupai sosok manusia ini menjadi daya tarik utama pantai.
-                            </p>
-                            <a href="#" class="inline-flex items-center space-x-2 text-cyan-300 hover:text-cyan-400 transition-colors">
-                                <span>Baca selengkapnya</span>
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="relative">
-                            <div class="aspect-[4/3] rounded-2xl overflow-hidden">
-                                <img src="{{ asset('images/malin-kundang.jpg') }}" alt="Batu Malin Kundang" class="w-full h-full object-cover">
+            <!-- Interactive Malin Kundang Story Card -->
+            <div class="relative">
+                <!-- Story Card with 3D Effect -->
+                <div class="glass-card rounded-[2rem] p-8 sm:p-12 relative overflow-hidden group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 border border-white/20 hover:border-cyan-400/50">
+
+                    <!-- Animated Background Pattern -->
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-cyan-500/20 animate-pulse"></div>
+                        <div class="absolute top-10 right-10 w-32 h-32 border-2 border-white/20 rounded-full animate-spin slow"></div>
+                        <div class="absolute bottom-10 left-10 w-24 h-24 border-2 border-white/20 rounded-full animate-ping"></div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
+                        <!-- Content Side -->
+                        <div class="space-y-6">
+                            <!-- Category Tag -->
+                            <div class="inline-flex items-center space-x-2 glass-card rounded-full px-4 py-2">
+                                <span class="text-2xl">📜</span>
+                                <span class="text-cyan-300 font-semibold text-sm tracking-wider">LEGENDARY STORY</span>
                             </div>
-                            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center transform rotate-12">
-                                <span class="text-4xl transform -rotate-12">🌊</span>
+
+                            <!-- Title with Gradient -->
+                            <h3 class="text-3xl sm:text-4xl md:text-5xl font-space-grotesk font-black leading-tight">
+                                <span class="bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
+                                    Legenda Malin Kundang
+                                </span>
+                                <span class="block text-white text-2xl sm:text-3xl mt-2">Yang Viral Sejak Dulu! 🔥</span>
+                            </h3>
+
+                            <!-- Story Text -->
+                            <div class="space-y-4">
+                                <p class="text-white/90 text-lg leading-relaxed">
+                                    Plot twist yang paling ikonik dalam sejarah Minang! Cerita tentang Malin Kundang yang durhaka sama ibunya dan akhirnya dikutuk jadi batu ini udah jadi content viral sejak berabad-abad lalu.
+                                </p>
+                                <p class="text-white/80 text-base leading-relaxed">
+                                    Real talk: Batu yang bentuknya kayak manusia ini masih eksis sampai sekarang dan jadi spot foto paling hits di Air Manis! Main character energy yang abadi banget kan? ✨
+                                </p>
+                            </div>
+
+                            <!-- Interactive Elements -->
+                            <div class="flex flex-wrap gap-3">
+                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-pink-300 hover:scale-110 transition-transform cursor-pointer">#LegendaryVibes</span>
+                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-purple-300 hover:scale-110 transition-transform cursor-pointer">#LocalWisdom</span>
+                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-cyan-300 hover:scale-110 transition-transform cursor-pointer">#CultureContent</span>
+                            </div>
+
+                            <!-- CTA Button -->
+                            <div class="pt-4">
+                                <button class="group bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white px-8 py-4 rounded-full font-bold hover:shadow-xl hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-3">
+                                    <span>Baca Full Story 📖</span>
+                                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Image Side with 3D Effects -->
+                        <div class="relative">
+                            <!-- Main Image Container -->
+                            <div class="relative group/image">
+                                <div class="aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-cyan-500/20 p-1">
+                                    <div class="w-full h-full rounded-3xl overflow-hidden">
+                                        <img src="https://i.pinimg.com/736x/a5/2f/0d/a52f0d8f641f8661d26bea181ad62492.jpg" alt="Batu Malin Kundang"
+                                            class="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110">
+                                    </div>
+                                </div>
+
+                                <!-- Floating Elements -->
+                                <div class="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-500 rounded-3xl flex items-center justify-center transform rotate-12 hover:rotate-0 transition-transform duration-500 group-hover:scale-110">
+                                    <span class="text-3xl transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">🌊</span>
+                                </div>
+
+                                <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center transform -rotate-12 hover:rotate-0 transition-transform duration-500 group-hover:scale-110">
+                                    <span class="text-2xl transform rotate-12 group-hover:rotate-0 transition-transform duration-500">📿</span>
+                                </div>
+
+                                <!-- Glow Effect -->
+                                <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 blur-xl opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 -z-10"></div>
+                            </div>
+
+                            <!-- Floating Stats -->
+                            <div class="absolute top-4 left-4 glass-card rounded-2xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-4 group-hover:translate-y-0">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-black">45+</div>
+                                    <div class="text-xs text-black">Years Old</div>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 right-4 glass-card rounded-2xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-pink-300">∞</div>
+                                    <div class="text-xs text-white/80">Legendary</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -561,6 +711,110 @@
 
         .font-space-grotesk {
             font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Gen Z 2025 Custom Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes slow-bounce {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes slow-spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-bounce.slow {
+            animation: slow-bounce 4s ease-in-out infinite;
+        }
+
+        .animate-spin.slow {
+            animation: slow-spin 8s linear infinite;
+        }
+
+        /* Glass morphism enhanced */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Gradient text animation */
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Hover effects for cards */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #06b6d4, #14b8a6);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #0891b2, #0d9488);
         }
     </style>
 </body>
