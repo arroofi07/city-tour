@@ -152,7 +152,7 @@
                 </div>
 
                 <a href="{{ route('stories.show', $story) }}"
-                  class="group/btn bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all transform hover:scale-105 inline-flex items-center space-x-2">
+                  class="group/btn bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-emerald-500/25 transition-all transform hover:scale-105 inline-flex items-center space-x-2">
                   <span>Baca</span>
                   <svg class="w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
@@ -199,7 +199,7 @@
               Tim kami akan review dan publish cerita terbaik! 🌟
             </p>
             <a href="{{ route('home') }}#contact"
-              class="inline-flex items-center space-x-3 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white px-8 py-4 rounded-full font-bold hover:shadow-xl hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300">
+              class="inline-flex items-center space-x-3 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white px-8 py-4 rounded-full font-bold hover:shadow-xl hover:shadow-emerald-500/25 transform hover:scale-105 transition-all duration-300">
               <span>Hubungi Kami</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
