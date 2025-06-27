@@ -41,6 +41,11 @@
             <span class="font-medium">Destinasi Wisata</span>
           </a>
 
+          <a href="{{ route('admin.stories.index') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-xl hover:bg-purple-50 hover:text-purple-600 transition-colors @if(request()->routeIs('admin.stories.*')) bg-purple-50 text-purple-600 @endif">
+            <span class="text-xl">📖</span>
+            <span class="font-medium">Legenda Stories</span>
+          </a>
+
           <a href="{{ route('home') }}" class="flex items-center space-x-3 px-4 py-3 text-gray-700 rounded-xl hover:bg-gray-100 transition-colors">
             <span class="text-xl">🌐</span>
             <span class="font-medium">Lihat Website</span>

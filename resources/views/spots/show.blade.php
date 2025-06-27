@@ -601,8 +601,8 @@
       <div class="border-t border-white/20 mt-16 pt-8">
         <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
           <div class="text-center lg:text-left">
-            <p class="text-white/80 text-lg">&copy; 2024 Air Manis Tour. All rights reserved.</p>
-            <p class="text-white/60">Made with ❤️ in Padang untuk para pecinta pantai</p>
+            <p class="text-white/80 text-lg">&copy; 2024 Air Manis Tour. YO Group .</p>
+            <p class="text-white/60">KONTAK DEVELOPER <a href="https://arovi.vercel.app" class="text-blue-300 hover:text-yellow-400 transition-colors">NAA</a></p>
           </div>
 
           <div class="flex items-center space-x-6">

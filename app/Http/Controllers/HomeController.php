@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TouristSpot;
 use App\Models\AirManisPhoto;
+use App\Models\Story;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,7 +26,9 @@ class HomeController extends Controller
       ->orderBy('order')
       ->get();
 
-    return view('welcome', compact('featuredSpots', 'spots', 'airManisPhotos'));
+    $stories = Story::active()->ordered()->get();
+
+    return view('welcome', compact('featuredSpots', 'spots', 'airManisPhotos', 'stories'));
   }
 
   public function spots(Request $request)
@@ -64,5 +67,26 @@ class HomeController extends Controller
       ->get();
 
     return view('spots.show', compact('spot', 'relatedSpots'));
+  }
+
+  public function stories()
+  {
+    $stories = Story::active()->ordered()->get();
+    return view('stories.index', compact('stories'));
+  }
+
+  public function showStory(Story $story)
+  {
+    if (!$story->is_active) {
+      abort(404);
+    }
+
+    $relatedStories = Story::active()
+      ->where('id', '!=', $story->id)
+      ->ordered()
+      ->take(3)
+      ->get();
+
+    return view('stories.show', compact('story', 'relatedStories'));
   }
 }

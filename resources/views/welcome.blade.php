@@ -423,32 +423,134 @@
                 </div>
             </div>
 
-            <!-- Interactive Photo Gallery with Bento Grid Layout -->
-            @if($airManisPhotos->count() > 0)
-            <div class="mb-16 sm:mb-24">
-            </div>
-            @else
-            <div class="text-center py-16 mb-16">
-                <div class="glass-card rounded-3xl p-12 max-w-2xl mx-auto relative overflow-hidden">
-                    <!-- Animated background -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-cyan-500/10 animate-pulse"></div>
-                    <div class="relative z-10">
-                        <div class="text-8xl mb-6 animate-bounce">📸</div>
-                        <h3 class="text-3xl font-bold text-white mb-4">Coming Soon! ✨</h3>
-                        <p class="text-white/80 text-lg">Kami lagi prepare konten gallery yang bakal bikin feed kamu makin aesthetic! Stay tuned ya bestie! 💫</p>
 
-                        <!-- Loading Animation -->
-                        <div class="mt-8 flex justify-center space-x-2">
-                            <div class="w-3 h-3 bg-pink-400 rounded-full animate-bounce"></div>
-                            <div class="w-3 h-3 bg-purple-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-                            <div class="w-3 h-3 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+
+            <!-- Dynamic Stories from Admin -->
+            @if($stories->count() > 0)
+            @foreach($stories as $index => $story)
+            <div class="relative mb-12">
+                <!-- Story Card with 3D Effect -->
+                <div class="glass-card rounded-[2rem] p-8 sm:p-12 relative overflow-hidden group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 border border-white/20 hover:border-cyan-400/50">
+
+                    <!-- Animated Background Pattern -->
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-cyan-500/20 animate-pulse"></div>
+                        <div class="absolute top-10 right-10 w-32 h-32 border-2 border-white/20 rounded-full animate-spin slow"></div>
+                        <div class="absolute bottom-10 left-10 w-24 h-24 border-2 border-white/20 rounded-full animate-ping"></div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
+                        <!-- Content Side -->
+                        <div class="space-y-6">
+                            <!-- Category Tag -->
+                            <div class="inline-flex items-center space-x-2 glass-card rounded-full px-4 py-2">
+                                <span class="text-2xl">📜</span>
+                                <span class="text-cyan-300 font-semibold text-sm tracking-wider">LEGENDARY STORY</span>
+                            </div>
+
+                            <!-- Title with Gradient -->
+                            <h3 class="text-3xl sm:text-4xl md:text-5xl font-space-grotesk font-black leading-tight">
+                                <span class="bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
+                                    {{ $story->title }}
+                                </span>
+                                @if($story->subtitle)
+                                <span class="block text-white text-2xl sm:text-3xl mt-2">{{ $story->subtitle }}</span>
+                                @endif
+                            </h3>
+
+                            <!-- Story Text -->
+                            <div class="space-y-4">
+                                <div class="text-white/90 text-lg leading-relaxed">
+                                    {{ $story->excerpt }}
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-white/60">
+                                    <span>📖 {{ $story->read_time }} menit baca</span>
+                                    <span>•</span>
+                                    <span>✨ Kisah Legendaris</span>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Elements -->
+                            <div class="flex flex-wrap gap-3">
+                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-pink-300 hover:scale-110 transition-transform cursor-pointer">#LegendaryVibes</span>
+                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-purple-300 hover:scale-110 transition-transform cursor-pointer">#LocalWisdom</span>
+                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-cyan-300 hover:scale-110 transition-transform cursor-pointer">#CultureContent</span>
+                            </div>
+
+                            <!-- Additional CTA for Stories -->
+                            @if($stories->count() > 1)
+                            <div class="pt-2">
+                                <a href="{{ route('stories.index') }}" class="inline-flex items-center space-x-2 text-purple-300 hover:text-purple-200 transition-colors text-sm font-medium">
+                                    <span>Lihat Semua Stories</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            @endif
+
+                            <!-- CTA Button -->
+                            <div class="pt-4">
+                                <a href="{{ route('stories.show', $story) }}" class="group bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white px-8 py-4 rounded-full font-bold hover:shadow-xl hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-3">
+                                    <span>Baca Selengkapnya 📖</span>
+                                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Image Side with 3D Effects -->
+                        <div class="relative">
+                            <!-- Main Image Container -->
+                            <div class="relative group/image">
+                                <div class="aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-cyan-500/20 p-1">
+                                    <div class="w-full h-full rounded-3xl overflow-hidden">
+                                        @if($story->image_path)
+                                        <img src="{{ asset('storage/' . $story->image_path) }}" alt="{{ $story->title }}"
+                                            class="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110">
+                                        @else
+                                        <div class="w-full h-full bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500 flex items-center justify-center">
+                                            <span class="text-white text-6xl">📜</span>
+                                        </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Floating Elements -->
+                                <div class="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-500 rounded-3xl flex items-center justify-center transform rotate-12 hover:rotate-0 transition-transform duration-500 group-hover:scale-110">
+                                    <span class="text-3xl transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">🌊</span>
+                                </div>
+
+                                <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center transform -rotate-12 hover:rotate-0 transition-transform duration-500 group-hover:scale-110">
+                                    <span class="text-2xl transform rotate-12 group-hover:rotate-0 transition-transform duration-500">📿</span>
+                                </div>
+
+                                <!-- Glow Effect -->
+                                <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 blur-xl opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 -z-10"></div>
+                            </div>
+
+                            <!-- Floating Stats -->
+                            <div class="absolute top-4 left-4 glass-card rounded-2xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-4 group-hover:translate-y-0">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-white">{{ $index + 1 }}</div>
+                                    <div class="text-xs text-white/80">Story</div>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 right-4 glass-card rounded-2xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-pink-300">✨</div>
+                                    <div class="text-xs text-white/80">Legendary</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            @endif
-
-            <!-- Interactive Malin Kundang Story Card -->
+            @endforeach
+            @else
+            <!-- Default/Fallback Story -->
             <div class="relative">
                 <!-- Story Card with 3D Effect -->
                 <div class="glass-card rounded-[2rem] p-8 sm:p-12 relative overflow-hidden group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 border border-white/20 hover:border-cyan-400/50">
@@ -472,36 +574,27 @@
                             <!-- Title with Gradient -->
                             <h3 class="text-3xl sm:text-4xl md:text-5xl font-space-grotesk font-black leading-tight">
                                 <span class="bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
-                                    Legenda Malin Kundang
+                                    Legenda Air Manis
                                 </span>
-                                <span class="block text-white text-2xl sm:text-3xl mt-2">Yang Viral Sejak Dulu! 🔥</span>
+                                <span class="block text-white text-2xl sm:text-3xl mt-2">Kisah yang Menginspirasi! 🔥</span>
                             </h3>
 
                             <!-- Story Text -->
                             <div class="space-y-4">
                                 <p class="text-white/90 text-lg leading-relaxed">
-                                    Plot twist yang paling ikonik dalam sejarah Minang! Cerita tentang Malin Kundang yang durhaka sama ibunya dan akhirnya dikutuk jadi batu, kisah ini sudah ada sejak berabad-abad lalu.
+                                    Temukan kisah-kisah legendaris yang telah menjadi bagian dari sejarah dan budaya Air Manis.
+                                    Setiap cerita memiliki makna dan pembelajaran yang mendalam.
                                 </p>
                                 <p class="text-white/80 text-base leading-relaxed">
-                                    Real talk: Batu yang bentuknya kayak manusia ini masih eksis sampai sekarang dan jadi spot foto paling hits di Air Manis! Main character energy yang abadi banget kan? ✨
+                                    Admin dapat menambahkan dan mengelola cerita-cerita legendaris melalui panel admin.
                                 </p>
                             </div>
 
                             <!-- Interactive Elements -->
                             <div class="flex flex-wrap gap-3">
-                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-pink-300 hover:scale-110 transition-transform cursor-pointer">#LegendaryVibes</span>
-                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-purple-300 hover:scale-110 transition-transform cursor-pointer">#LocalWisdom</span>
-                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-cyan-300 hover:scale-110 transition-transform cursor-pointer">#CultureContent</span>
-                            </div>
-
-                            <!-- CTA Button -->
-                            <div class="pt-4">
-                                <button class="group bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white px-8 py-4 rounded-full font-bold hover:shadow-xl hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-3">
-                                    <span>Baca Full Story 📖</span>
-                                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                    </svg>
-                                </button>
+                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-pink-300 hover:scale-110 transition-transform cursor-pointer">#ComingSoon</span>
+                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-purple-300 hover:scale-110 transition-transform cursor-pointer">#AddStories</span>
+                                <span class="glass-card px-4 py-2 rounded-full text-sm font-semibold text-cyan-300 hover:scale-110 transition-transform cursor-pointer">#ManageContent</span>
                             </div>
                         </div>
 
@@ -510,43 +603,28 @@
                             <!-- Main Image Container -->
                             <div class="relative group/image">
                                 <div class="aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-cyan-500/20 p-1">
-                                    <div class="w-full h-full rounded-3xl overflow-hidden">
-                                        <img src="https://i.pinimg.com/736x/a5/2f/0d/a52f0d8f641f8661d26bea181ad62492.jpg" alt="Batu Malin Kundang"
-                                            class="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110">
+                                    <div class="w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500 flex items-center justify-center">
+                                        <span class="text-white text-6xl">📚</span>
                                     </div>
                                 </div>
 
                                 <!-- Floating Elements -->
                                 <div class="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-500 rounded-3xl flex items-center justify-center transform rotate-12 hover:rotate-0 transition-transform duration-500 group-hover:scale-110">
-                                    <span class="text-3xl transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">🌊</span>
+                                    <span class="text-3xl transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">✨</span>
                                 </div>
 
                                 <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center transform -rotate-12 hover:rotate-0 transition-transform duration-500 group-hover:scale-110">
-                                    <span class="text-2xl transform rotate-12 group-hover:rotate-0 transition-transform duration-500">📿</span>
+                                    <span class="text-2xl transform rotate-12 group-hover:rotate-0 transition-transform duration-500">📝</span>
                                 </div>
 
                                 <!-- Glow Effect -->
                                 <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 blur-xl opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 -z-10"></div>
                             </div>
-
-                            <!-- Floating Stats -->
-                            <div class="absolute top-4 left-4 glass-card rounded-2xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-4 group-hover:translate-y-0">
-                                <div class="text-center">
-                                    <div class="text-2xl font-bold text-black">45+</div>
-                                    <div class="text-xs text-black">Years Old</div>
-                                </div>
-                            </div>
-
-                            <div class="absolute bottom-4 right-4 glass-card rounded-2xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                                <div class="text-center">
-                                    <div class="text-2xl font-bold text-pink-300">∞</div>
-                                    <div class="text-xs text-white/80">Legendary</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </section>
 
@@ -663,7 +741,7 @@
 
             <div class="border-t border-white/10 mt-12 pt-8 text-center">
                 <p class="text-white/40">© 2025 Air Manis Tour. Made with YO GROUP DEVELOPER</p>
-                <p class="text-white/40"> 
+                <p class="text-white/40">
                     <a href="https://arovi.vercel.app" class="text-blue-300 hover:text-yellow-400 transition-colors">CONTACT DEVELOPER</a>
                 </p>
             </div>

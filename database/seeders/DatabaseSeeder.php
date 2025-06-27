@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         // Call TouristSpotSeeder
         $this->call([
             TouristSpotSeeder::class,
+            StorySeeder::class,
         ]);
     }
 }
