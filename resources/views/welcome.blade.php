@@ -480,7 +480,7 @@
                             <!-- Story Text -->
                             <div class="space-y-4">
                                 <p class="text-white/90 text-lg leading-relaxed">
-                                    Plot twist yang paling ikonik dalam sejarah Minang! Cerita tentang Malin Kundang yang durhaka sama ibunya dan akhirnya dikutuk jadi batu ini udah jadi content viral sejak berabad-abad lalu.
+                                    Plot twist yang paling ikonik dalam sejarah Minang! Cerita tentang Malin Kundang yang durhaka sama ibunya dan akhirnya dikutuk jadi batu, kisah ini sudah ada sejak berabad-abad lalu.
                                 </p>
                                 <p class="text-white/80 text-base leading-relaxed">
                                     Real talk: Batu yang bentuknya kayak manusia ini masih eksis sampai sekarang dan jadi spot foto paling hits di Air Manis! Main character energy yang abadi banget kan? ✨
@@ -662,7 +662,10 @@
             </div>
 
             <div class="border-t border-white/10 mt-12 pt-8 text-center">
-                <p class="text-white/40">© 2025 Air Manis Tour. Made with ❤️ for travelers</p>
+                <p class="text-white/40">© 2025 Air Manis Tour. Made with YO GROUP DEVELOPER</p>
+                <p class="text-white/40"> 
+                    <a href="https://arovi.vercel.app" class="text-blue-300 hover:text-yellow-400 transition-colors">CONTACT DEVELOPER</a>
+                </p>
             </div>
         </div>
     </footer>
