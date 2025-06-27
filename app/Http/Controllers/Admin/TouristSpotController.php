@@ -75,7 +75,7 @@ class TouristSpotController extends Controller
 
     TouristSpot::create($validated);
 
-    return redirect('http://localhost:8000/admin/tourist-spots')
+    return redirect()->route('admin.tourist-spots.index')
       ->with('success', 'Tempat wisata berhasil ditambahkan! 🎉');
   }
 
@@ -170,7 +170,7 @@ class TouristSpotController extends Controller
 
     $touristSpot->update($validated);
 
-    return redirect('http://localhost:8000/admin/tourist-spots')
+    return redirect()->route('admin.tourist-spots.index')
       ->with('success', 'Tempat wisata berhasil diperbarui! ✨');
   }
 
@@ -188,7 +188,7 @@ class TouristSpotController extends Controller
 
     $touristSpot->delete();
 
-    return redirect('http://localhost:8000/admin/tourist-spots')
+    return redirect()->route('admin.tourist-spots.index')
       ->with('success', 'Tempat wisata berhasil dihapus! 🗑️');
   }
 }

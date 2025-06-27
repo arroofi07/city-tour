@@ -24,7 +24,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.post.size'])-
     Route::resource('stories', StoryController::class);
     Route::get('/', function () {
         return redirect()->route('admin.tourist-spots.index');
-    });
+    })->name('dashboard');
 });
 
 // Air Manis Photos Routes
