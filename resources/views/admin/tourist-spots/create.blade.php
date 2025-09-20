@@ -17,6 +17,15 @@
     </div>
   </div>
 
+  @if($errors->has('error'))
+  <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-6">
+    <div class="flex items-center">
+      <span class="text-xl mr-2">⚠️</span>
+      <span>{{ $errors->first('error') }}</span>
+    </div>
+  </div>
+  @endif
+
   <form action="{{ route('admin.tourist-spots.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6 lg:space-y-8">
     @csrf
 
@@ -114,10 +123,15 @@
           <div class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-orange-400 transition-colors">
             <input type="file" name="image" id="image" accept="image/*" class="hidden" required>
             <label for="image" class="cursor-pointer">
-              <div class="space-y-2">
+              <div id="main-upload-prompt" class="space-y-2">
                 <div class="text-4xl">📷</div>
                 <p class="text-lg font-medium text-gray-900">Upload Foto Utama</p>
                 <p class="text-sm text-gray-500">PNG, JPG, JPEG, WEBP (Max: 5MB)</p>
+              </div>
+              <div id="main-image-preview" class="hidden space-y-2">
+                <img id="main-preview-img" src="" alt="Preview" class="mx-auto h-32 w-auto rounded-lg object-cover">
+                <p id="main-file-name" class="text-lg font-medium text-gray-900"></p>
+                <p class="text-sm text-gray-500">Klik untuk mengganti foto</p>
               </div>
             </label>
           </div>
@@ -301,14 +315,10 @@
 
       const reader = new FileReader();
       reader.onload = function(e) {
-        const label = document.querySelector('label[for="image"]');
-        label.innerHTML = `
-                <div class="space-y-2">
-                    <img src="${e.target.result}" class="mx-auto h-32 w-auto rounded-lg object-cover">
-                    <p class="text-lg font-medium text-gray-900">Foto Terpilih: ${file.name}</p>
-                    <p class="text-sm text-gray-500">${(file.size / 1024 / 1024).toFixed(2)}MB - Klik untuk mengganti</p>
-                </div>
-            `;
+        document.getElementById('main-upload-prompt').classList.add('hidden');
+        document.getElementById('main-image-preview').classList.remove('hidden');
+        document.getElementById('main-preview-img').src = e.target.result;
+        document.getElementById('main-file-name').textContent = `${file.name} (${(file.size / 1024 / 1024).toFixed(2)}MB)`;
       };
       reader.readAsDataURL(file);
     }
@@ -353,32 +363,57 @@
 
   // Form submission validation
   document.querySelector('form').addEventListener('submit', function(e) {
+    console.log('Form submit event triggered');
     const imageInput = document.getElementById('image');
     const galleryInput = document.getElementById('gallery');
 
-    // Check main image
+    // Remove any existing errors
+    const existingError = document.querySelector('.file-size-error');
+    if (existingError) existingError.remove();
+
+    // Check main image (only if a file is selected)
     if (imageInput.files[0] && !validateFileSize(imageInput.files[0], 5)) {
       e.preventDefault();
       showFileError('Gambar utama terlalu besar. Silakan pilih file yang lebih kecil dari 5MB.');
       return;
     }
 
-    // Check gallery files
+    // Check gallery files (only if files are selected)
     const galleryFiles = Array.from(galleryInput.files);
-    const invalidGalleryFiles = galleryFiles.filter(file => !validateFileSize(file, 5));
+    if (galleryFiles.length > 0) {
+      const invalidGalleryFiles = galleryFiles.filter(file => !validateFileSize(file, 5));
 
-    if (invalidGalleryFiles.length > 0) {
-      e.preventDefault();
-      showFileError('Beberapa file galeri terlalu besar. Maksimal 5MB per file.');
-      return;
+      if (invalidGalleryFiles.length > 0) {
+        e.preventDefault();
+        showFileError('Beberapa file galeri terlalu besar. Maksimal 5MB per file.');
+        return;
+      }
+
+      // Check total file count
+      if (galleryFiles.length > 20) {
+        e.preventDefault();
+        showFileError('Terlalu banyak file galeri. Maksimal 20 foto.');
+        return;
+      }
     }
 
-    // Check total file count
-    if (galleryFiles.length > 20) {
-      e.preventDefault();
-      showFileError('Terlalu banyak file galeri. Maksimal 20 foto.');
-      return;
+    // Let Laravel validation handle required image check
+    // JavaScript validation only checks file size, not requirement
+
+    // Show loading state on submit button
+    const submitBtn = this.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '⏳ Menyimpan...';
+
+      // Re-enable button after 10 seconds in case of error
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '🚀 Publikasikan Destinasi';
+      }, 10000);
     }
+
+    console.log('Form validation passed, submitting...');
   });
 </script>
 @endsection

@@ -18,27 +18,10 @@
 
 <body class="bg-gradient-to-br from-slate-900 via-purple-900 to-pink-900 min-h-screen font-outfit text-white">
 
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="flex items-center justify-between h-16">
-        <a href="{{ route('home') }}" class="flex items-center space-x-2">
-          <div class="w-8 h-8 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-xl flex items-center justify-center">
-            <span class="text-white font-bold text-sm">🌊</span>
-          </div>
-          <span class="font-space-grotesk font-bold text-xl text-white">Air Manis</span>
-        </a>
+  <!-- Include Professional Navigation -->
+  @include('partials.navbar')
 
-        <div class="flex items-center space-x-6">
-          <a href="{{ route('home') }}" class="text-white/80 hover:text-white transition-colors">Home</a>
-          <a href="{{ route('spots.index') }}" class="text-white/80 hover:text-white transition-colors">Destinasi</a>
-          <a href="{{ route('stories.index') }}" class="text-white border-b-2 border-purple-400">Stories</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <main class="pt-16">{/* Content area begins after navigation */}
+  <main class="pt-20 lg:pt-24">
     <!-- Hero Section -->
     <section class="py-20 sm:py-32 relative overflow-hidden">
       <!-- Background Elements -->

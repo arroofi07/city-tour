@@ -34,12 +34,20 @@
 
         <div>
           <label for="image" class="block text-sm font-medium text-gray-700">Foto</label>
-          <div class="mt-1 flex items-center">
-            <div class="w-full">
-              <label class="block">
-                <span class="sr-only">Pilih foto</span>
-                <input type="file" name="image" id="image" required accept="image/*"
-                  class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100">
+          <div class="mt-1">
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-cyan-400 transition-colors" id="image-upload-area">
+              <input type="file" name="image" id="image" required accept="image/*" class="hidden">
+              <label for="image" class="cursor-pointer">
+                <div id="upload-prompt">
+                  <div class="text-4xl mb-2">📷</div>
+                  <p class="text-lg font-medium text-gray-900">Upload Foto</p>
+                  <p class="text-sm text-gray-500">PNG, JPG, JPEG (Max: 2MB)</p>
+                </div>
+                <div id="image-preview" class="hidden">
+                  <img id="preview-img" src="" alt="Preview" class="mx-auto h-32 w-auto rounded-lg object-cover">
+                  <p id="file-name" class="text-lg font-medium text-gray-900 mt-2"></p>
+                  <p class="text-sm text-gray-500">Klik untuk mengganti foto</p>
+                </div>
               </label>
             </div>
           </div>
@@ -74,4 +82,27 @@
     </div>
   </div>
 </div>
+<script>
+  document.getElementById('image').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      // Validate file size (2MB = 2048KB)
+      if (file.size > 2048 * 1024) {
+        alert('Ukuran file terlalu besar. Maksimal 2MB.');
+        this.value = '';
+        return;
+      }
+
+      // Show preview
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('upload-prompt').classList.add('hidden');
+        document.getElementById('image-preview').classList.remove('hidden');
+        document.getElementById('preview-img').src = e.target.result;
+        document.getElementById('file-name').textContent = file.name;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
 @endsection

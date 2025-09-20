@@ -60,74 +60,9 @@
 </head>
 
 <body class="bg-gradient-to-br from-slate-900 via-cyan-900 to-teal-900 font-outfit text-white min-h-screen">
-  <!-- Premium Navigation -->
-  <nav class="fixed top-0 w-full bg-white/10 backdrop-blur-2xl z-50 border-b border-white/20">
-    <div class="max-w-8xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-      <div class="flex items-center justify-between">
-        <a href="/" class="flex items-center space-x-2 sm:space-x-3">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg">
-            <span class="text-white font-black text-lg sm:text-xl">🌊</span>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-space-grotesk font-black text-xl sm:text-2xl text-white">Air Manis Tour</span>
-            <span class="text-cyan-300 text-[10px] sm:text-xs font-medium tracking-wider">LEGENDARY BEACH EXPERIENCE</span>
-          </div>
-        </a>
+  <!-- Include Professional Navigation -->
+  @include('partials.navbar')
 
-        <div class="hidden md:flex items-center space-x-10">
-          <a href="/" class="text-white/80 hover:text-cyan-300 transition-colors font-bold text-lg relative group">
-            Beranda
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="/spots" class="text-cyan-300 font-bold text-lg relative">
-            Destinasi
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-300"></span>
-          </a>
-          <a href="/#featured" class="text-white/80 hover:text-cyan-300 transition-colors font-bold text-lg relative group">
-            Unggulan
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="/#about" class="text-white/80 hover:text-cyan-300 transition-colors font-bold text-lg relative group">
-            Air Manis
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="/#contact" class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-8 py-3 rounded-2xl font-bold hover:shadow-xl hover:shadow-cyan-500/25 transform hover:-translate-y-1 transition-all duration-300">
-            Kontak Kami
-          </a>
-        </div>
-
-        <!-- Enhanced Mobile menu button -->
-        <div class="md:hidden">
-          <button id="mobile-menu-button" class="text-white/80 hover:text-white p-3 rounded-xl bg-white/10 backdrop-blur-sm">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Enhanced Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden pb-4 pt-2">
-        <div class="flex flex-col space-y-3 glass-card rounded-2xl p-4 sm:p-6 mt-2">
-          <a href="/" class="text-white/80 hover:text-cyan-300 transition-colors font-bold text-base sm:text-lg py-2 flex items-center space-x-3">
-            <span>🏠</span><span>Beranda</span>
-          </a>
-          <a href="/spots" class="text-cyan-300 font-bold text-base sm:text-lg py-2 flex items-center space-x-3">
-            <span>🏖️</span><span>Destinasi</span>
-          </a>
-          <a href="/#featured" class="text-white/80 hover:text-cyan-300 transition-colors font-bold text-base sm:text-lg py-2 flex items-center space-x-3">
-            <span>⭐</span><span>Unggulan</span>
-          </a>
-          <a href="/#about" class="text-white/80 hover:text-cyan-300 transition-colors font-bold text-base sm:text-lg py-2 flex items-center space-x-3">
-            <span>🌊</span><span>Air Manis</span>
-          </a>
-          <a href="/#contact" class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 sm:px-6 py-3 rounded-xl sm:rounded-2xl font-bold hover:shadow-lg transition-all text-center mt-2 text-base sm:text-lg flex items-center justify-center space-x-2">
-            <span>📞</span><span>Kontak Kami</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
 
   <!-- Epic Hero Section -->
   <section class="pt-24 sm:pt-28 pb-12 sm:pb-16 relative overflow-hidden">
@@ -434,12 +369,6 @@
   </footer>
 
   <script>
-    // Mobile menu toggle
-    document.getElementById('mobile-menu-button').addEventListener('click', function() {
-      const mobileMenu = document.getElementById('mobile-menu');
-      mobileMenu.classList.toggle('hidden');
-    });
-
     // Search functionality
     const searchInput = document.getElementById('search-input');
     const spotCards = document.querySelectorAll('.spot-card');

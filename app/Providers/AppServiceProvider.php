@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,10 +26,10 @@ class AppServiceProvider extends ServiceProvider
         }
 
         // Set proper app URL if not set
-        if (!config('app.url') || config('app.url') === 'http://localhost') {
-            $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+        if (! config('app.url') || config('app.url') === 'http://localhost') {
+            $protocol = (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
             $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-            config(['app.url' => $protocol . $host]);
+            config(['app.url' => $protocol.$host]);
         }
     }
 }

@@ -12,6 +12,15 @@
     </div>
 
     <!-- Form Card -->
+    @if($errors->has('error'))
+    <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-6">
+      <div class="flex items-center">
+        <span class="text-xl mr-2">⚠️</span>
+        <span>{{ $errors->first('error') }}</span>
+      </div>
+    </div>
+    @endif
+
     <div class="bg-white rounded-2xl shadow-lg p-6 lg:p-8">
       <form action="{{ route('admin.tourist-spots.update', $touristSpot) }}" method="POST" enctype="multipart/form-data" class="space-y-4 lg:space-y-6">
         @csrf
@@ -248,7 +257,9 @@
             </label>
             @if($touristSpot->image)
             <div class="mb-4 relative">
-              <img src="{{ asset('storage/' . $touristSpot->image) }}" alt="Current image" class="w-32 h-32 object-cover rounded-xl">
+              <img src="{{ asset('storage/' . $touristSpot->image) }}" alt="Current image"
+                class="w-32 h-32 object-cover rounded-xl border-2 border-gray-200"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjY0IiB5PSI1NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzlCOUI5QiIgZm9udC1zaXplPSIxMCI+RmlsZTwvdGV4dD4KPHRleHQgeD0iNjQiIHk9IjY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOUI5QjlCIiBmb250LXNpemU9IjEwIj5UaWRhayBEaXRlbXVrYW48L3RleHQ+Cjx0ZXh0IHg9IjY0IiB5PSI4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzlCOUI5QiIgZm9udC1zaXplPSI4Ij57eyAkdG91cmlzdFNwb3QtPmltYWdlIH19PC90ZXh0Pgo8L3N2Zz4='; this.parentElement.style.opacity='0.7'; this.nextElementSibling.innerHTML='<span class=\"text-red-500\">Gambar tidak dapat dimuat</span><br><span class=\"text-xs text-gray-400\">{{ $touristSpot->image }}</span>';">
               <p class="text-sm text-gray-500 mt-2">Gambar saat ini</p>
               <button type="button"
                 onclick="deleteMainImage()"
@@ -280,7 +291,9 @@
             <div class="grid grid-cols-4 gap-4 mb-4" id="gallery-container">
               @foreach($touristSpot->gallery as $index => $galleryImage)
               <div class="relative gallery-item" data-index="{{ $index }}">
-                <img src="{{ asset('storage/' . $galleryImage) }}" alt="Gallery" class="w-full h-24 object-cover rounded-xl">
+                <img src="{{ asset('storage/' . $galleryImage) }}" alt="Gallery"
+                  class="w-full h-24 object-cover rounded-xl border border-gray-200"
+                  onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjQ4IiB5PSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzlCOUI5QiIgZm9udC1zaXplPSI4Ij5HYW1iYXI8L3RleHQ+Cjx0ZXh0IHg9IjQ4IiB5PSI1NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzlCOUI5QiIgZm9udC1zaXplPSI4Ij5UaWRhayBEaXRlbXVrYW48L3RleHQ+Cjwvc3ZnPg=='; this.style.opacity='0.6';">
                 <button type="button"
                   onclick="deleteGalleryImage('{{ $index }}')"
                   class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600 transition-colors"

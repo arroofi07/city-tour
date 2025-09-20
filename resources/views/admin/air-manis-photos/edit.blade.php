@@ -35,20 +35,30 @@
 
         <div>
           <label class="block text-sm font-medium text-gray-700">Foto Saat Ini</label>
-          <div class="mt-2">
+          <div class="mt-2" id="current-image">
             <img src="{{ asset('storage/' . $photo->image_path) }}" alt="{{ $photo->title }}"
-              class="w-48 h-48 object-cover rounded-lg">
+              class="w-48 h-48 object-cover rounded-lg border-2 border-gray-200"
+              onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOUI5QjlCIiBmb250LXNpemU9IjE0Ij5GaWxlIFRpZGFrIERpdGVtdWthbjwvdGV4dD4KPC9zdmc+'; this.parentElement.innerHTML += '<p class=\"text-red-500 text-sm mt-2\">Gambar tidak dapat dimuat. File mungkin telah dihapus atau path tidak valid.</p>';">
+            <p class="text-sm text-gray-500 mt-2">{{ $photo->image_path }}</p>
           </div>
         </div>
 
         <div>
           <label for="image" class="block text-sm font-medium text-gray-700">Ganti Foto (Opsional)</label>
-          <div class="mt-1 flex items-center">
-            <div class="w-full">
-              <label class="block">
-                <span class="sr-only">Pilih foto</span>
-                <input type="file" name="image" id="image" accept="image/*"
-                  class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100">
+          <div class="mt-1">
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-cyan-400 transition-colors" id="new-image-upload-area">
+              <input type="file" name="image" id="image" accept="image/*" class="hidden">
+              <label for="image" class="cursor-pointer">
+                <div id="new-upload-prompt">
+                  <div class="text-4xl mb-2">📷</div>
+                  <p class="text-lg font-medium text-gray-900">Upload Foto Baru</p>
+                  <p class="text-sm text-gray-500">PNG, JPG, JPEG (Max: 2MB)</p>
+                </div>
+                <div id="new-image-preview" class="hidden">
+                  <img id="new-preview-img" src="" alt="Preview" class="mx-auto h-32 w-auto rounded-lg object-cover">
+                  <p id="new-file-name" class="text-lg font-medium text-gray-900 mt-2"></p>
+                  <p class="text-sm text-gray-500">Klik untuk mengganti foto</p>
+                </div>
               </label>
             </div>
           </div>
@@ -83,4 +93,31 @@
     </div>
   </div>
 </div>
+<script>
+  document.getElementById('image').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      // Validate file size (2MB = 2048KB)
+      if (file.size > 2048 * 1024) {
+        alert('Ukuran file terlalu besar. Maksimal 2MB.');
+        this.value = '';
+        return;
+      }
+
+      // Show preview
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('new-upload-prompt').classList.add('hidden');
+        document.getElementById('new-image-preview').classList.remove('hidden');
+        document.getElementById('new-preview-img').src = e.target.result;
+        document.getElementById('new-file-name').textContent = file.name;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      // Reset to upload prompt if no file selected
+      document.getElementById('new-upload-prompt').classList.remove('hidden');
+      document.getElementById('new-image-preview').classList.add('hidden');
+    }
+  });
+</script>
 @endsection
